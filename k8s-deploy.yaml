@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boring-app
+  labels:
+    app: boring-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: boring-app
+  template:
+    metadata:
+      labels:
+        app: boring-app
+    spec:
+      containers:
+      - name: boring-app
+        image: ghcr.io/username/boring-app:latest
+        ports:
+        - containerPort: 80      
