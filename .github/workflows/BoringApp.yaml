@@ -1,0 +1,29 @@
+name: ASP.NET Core Build and Deploy # Name of the GitHub workflow
+
+on:
+  push:
+    branches:
+      - main # Trigger the workflow when code is pushed to the 'main' branch
+
+jobs:
+  build: # Define the 'build' job
+    runs-on: ubuntu-latest # Use the latest version of Ubuntu as the runner
+    steps:
+    - name: Checkout code # Step to checkout the repository's code
+      uses: actions/checkout@v2 # Use the checkout action to retrieve the code
+
+    - name: Setup .NET # Step to set up the .NET environment
+      uses: actions/setup-dotnet@v3 # Use the setup-dotnet action
+      with:
+        dotnet-version: '8.0.x' # Specify the .NET version to use (updated to .NET 8)
+
+    - name: Restore dependencies # Step to restore project dependencies
+      run: dotnet restore # Command to restore the dependencies
+
+    - name: Build # Step to build the project
+      run: dotnet build --configuration Release --no-restore # Command to build the project in Release configuration
+
+    - name: Test # Step to run tests
+      run: dotnet test --no-restore --verbosity normal # Command to run tests
+
+  
