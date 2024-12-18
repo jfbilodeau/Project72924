@@ -23,6 +23,9 @@ jobs:
     - name: Build # Step to build the project
       run: dotnet build --configuration Release --no-restore --output out # Command to build the project in Release configuration
 
+    - name: list files
+      run: ls out
+
     - name: Test # Step to run tests
       run: dotnet test --no-restore --verbosity normal # Command to run tests
 
