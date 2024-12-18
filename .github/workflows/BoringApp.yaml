@@ -34,6 +34,8 @@ jobs:
 
   deploy: # Define the 'deploy' job
     runs-on: ubuntu-latest # Use the latest version of Ubuntu as the runner
+    needs: build # Specify that the 'deploy' job depends on the 'build' job
+    
     steps:
     - name: Download build artifact # Step to download the build artifact
       uses: actions/download-artifact@v3
