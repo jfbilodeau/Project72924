@@ -31,3 +31,11 @@ jobs:
       with: 
         name: build-artifact 
         path: ${{github.workspace}}/out # Specify the path to the artifact
+
+  deploy: # Define the 'deploy' job
+    runs-on: ubuntu-latest # Use the latest version of Ubuntu as the runner
+    steps:
+    - name: Download build artifact # Step to download the build artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: build-artifact
