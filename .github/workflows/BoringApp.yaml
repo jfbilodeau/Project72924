@@ -35,9 +35,19 @@ jobs:
   deploy: # Define the 'deploy' job
     runs-on: ubuntu-latest # Use the latest version of Ubuntu as the runner
     needs: build # Specify that the 'deploy' job depends on the 'build' job
-    
+
     steps:
     - name: Download build artifact # Step to download the build artifact
       uses: actions/download-artifact@v3
       with:
         name: build-artifact
+
+    - name: Add Azure CLI # Step to add Azure CLI
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2 # Specify the Azure CLI version
+
+    - name: Login to Azure # Step to login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }} # Use the Azure credentials stored in GitHub secrets
