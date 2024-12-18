@@ -21,13 +21,13 @@ jobs:
       run: dotnet restore # Command to restore the dependencies
 
     - name: Build # Step to build the project
-      run: dotnet build --configuration Release --no-restore --output out # Command to build the project in Release configuration
-
-    - name: list files
-      run: ls out
+      run: dotnet build --configuration Release --no-restore # Command to build the project in Release configuration
 
     - name: Test # Step to run tests
       run: dotnet test --no-restore --verbosity normal # Command to run tests
+
+    - name: Publish
+      run: dotnet publish --output out
 
     - name: Upload build artifact # Step to upload the build artifact 
       uses: actions/upload-artifact@v3 
