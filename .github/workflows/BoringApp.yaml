@@ -41,8 +41,16 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: build-artifact
+        path: out # Specify the path to download the artifact
 
     - name: Login to Azure # Step to login to Azure
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }} # Use the Azure credentials stored in GitHub secrets
+
+    - name: Deploy to Azure Web App # Step to deploy the application to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.WEBAPP_NAME }} # Specify the name of the Azure Web App
+        package: ${{ github.workspace }}/out # Specify the path to the build artifact
+        slot-name: 'production' # Specify the deployment slot name
