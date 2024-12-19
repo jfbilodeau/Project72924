@@ -60,6 +60,7 @@ jobs:
         template-file: arm/template-demo73924.bicep
         parameters-file: arm/parameters-demo72924-prod.json
         type: deployment
+        operation: create
         
     - name: Deploy to Azure Web App # Step to deploy the application to Azure Web App
       uses: azure/webapps-deploy@v2
