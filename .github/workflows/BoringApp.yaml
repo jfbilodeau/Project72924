@@ -1,6 +1,7 @@
 name: ASP.NET Core Build and Deploy # Name of the GitHub workflow
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main # Trigger the workflow when code is pushed to the 'main' branch
