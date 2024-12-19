@@ -1,8 +1,8 @@
 param location string = resourceGroup().location
 param appServicePlanName string
 param webAppName string
-param skuName string = 'P1V2'
-param skuTier string = 'PremiumV2'
+param skuName string = 'P0V1'
+param skuTier string = 'PremiumV3'
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
   name: appServicePlanName
@@ -12,7 +12,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
     tier: skuTier
   }
   properties: {
-    reserved: true
+    reserved: false
   }
 }
 
@@ -22,13 +22,7 @@ resource webApp 'Microsoft.Web/sites@2022-03-01' = {
   properties: {
     serverFarmId: appServicePlan.id
     siteConfig: {
-      appSettings: [
-        {
-          name: 'WEBSITE_RUN_FROM_PACKAGE'
-          value: '1'
-        }
-      ]
-      linuxFxVersion: 'DOTNET|8.0' // Specify .NET 8.0 runtime stack
+      netFrameworkVersion: 'v8.0'
     }
   }
 }
