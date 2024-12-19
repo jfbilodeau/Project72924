@@ -41,6 +41,9 @@ jobs:
     needs: build # Specify that the 'deploy' job depends on the 'build' job
 
     steps:
+    - name: Checkout code # Step to checkout the repository's code
+      uses: actions/checkout@v2 # Use the checkout action to retrieve the code
+    
     - name: Download build artifact # Step to download the build artifact
       uses: actions/download-artifact@v3
       with:
