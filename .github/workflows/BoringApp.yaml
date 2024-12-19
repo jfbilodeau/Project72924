@@ -51,6 +51,15 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }} # Use the Azure credentials stored in GitHub secrets
 
+    - name: Apply Bicep template
+      uses: azure/Bicep@v1
+      with:
+        name: "DeployFromWorkflow"
+        scope: resourceGroup
+        resourceGroupName: demo72924
+        template-file: arm/template-demo73924.bicep
+        parameters-file: arm/parameters-demo72924-prod.json
+        
     - name: Deploy to Azure Web App # Step to deploy the application to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
