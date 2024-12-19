@@ -52,7 +52,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }} # Use the Azure credentials stored in GitHub secrets
 
     - name: Apply Bicep template
-      uses: azure/Bicep@v1
+      uses: azure/bicep-deploy@v1
       with:
         name: "DeployFromWorkflow"
         scope: resourceGroup
