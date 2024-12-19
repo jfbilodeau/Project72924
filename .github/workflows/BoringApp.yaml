@@ -58,7 +58,7 @@ jobs:
         scope: resourceGroup
         resource-group-name: demo72924
         template-file: arm/template-demo73924.bicep
-        parameters-file: arm/parameters-demo72924-prod.json
+        parameters-file: arm/parameters-demo73924-prod.json
         type: deployment
         operation: create
         subscription-id: 72453083-3ca3-4638-9779-89eca7e2fd83
